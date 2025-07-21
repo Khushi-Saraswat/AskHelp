@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+           <h2>Research Assistant</h2>
+        </div>
+
+         <div class="actions">
+
+         <button id="summarizeBtn">Summarize</button>
+          
+         <button id="CitiationBtn">Cite</button>
+
+         <button id="ask" >Ask</button>
+
+         </div>
+         
+
+        <div class="notes">
+          <h3>Research Notes</h3>
+          <textarea id="notes" placeholder="Takes notes here"></textarea>
+          <button id="saveNotesBtn">Save Notes</button>
+        </div>
+
+        <div id="results"></div>
+        <button id="copyBtn">Copy</button>
+       
+    </div>
+
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <input type="text" id="myInput" placeholder="Enter text">
+    <button id="submit">submit</button>
+    </div>
+    </div>
+    <script src="sidepanel.js"></script>
+    
+</body>
+</html>
