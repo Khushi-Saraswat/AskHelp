@@ -29,7 +29,7 @@ async function summarizeText() {
   try {
     // Get active tab
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
+                   
     // Get selected text from the tab
     const [{ result }] = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
@@ -68,11 +68,14 @@ async function summarizeText() {
 async function citiationNotes(){
 
   //extracting title, author, date, and URL from the current page
-  const title = document.title;
-  const url = window.location.href;
-  const author = document.querySelector('meta[name="author"]')?.content || "Unknown";
-  const date = document.querySelector('meta[property="article:published_time"]')?.content;
-  const result = `Title: ${title}\nAuthor: ${author}\nDate: ${date}\nURL: ${url}`;
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  console.log("tab",tab);
+  const url=tab.url;
+  const title=tab.title;
+ // const title = document.title;
+ // const url = window.location.href;
+  
+  const result = `Title: ${title}\nURL: ${url}`;
    const response = await fetch('http://localhost:8080/api/research/process', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -126,15 +129,18 @@ function ask(){
   var modal = document.getElementById("myModal");
    modal.style.display = "block";
 
-var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("close")[0];
+
+ document.getElementById('submit').onclick = function(){
+    modal.style.display = "none";
+ };
 
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -145,13 +151,25 @@ window.onclick = function(event) {
 }
 
 async function submitQuery(){
+
+               // Get active tab
+          const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+                   
+           // Get selected text from the tab
+           const [{ result }] = await chrome.scripting.executeScript({
+             target: { tabId: tab.id },
+             function: () => window.getSelection().toString(),
+            });
+
+
            let inputField = document.getElementById("myInput");
            let value = inputField.value;
            alert("Input value: " + value);
+           const res = `value: ${value}\nresult: ${result}`;
            const response = await fetch('http://localhost:8080/api/research/process', {
            method: 'POST',
            headers: { 'Content-Type': 'application/json' },
-           body: JSON.stringify({ content: value, operation: 'ask' }),
+           body: JSON.stringify({ content: res, operation: 'ask' }),
            });
 
 
