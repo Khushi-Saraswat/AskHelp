@@ -1,4 +1,4 @@
-
+<img width="1832" height="781" alt="ask" src="https://github.com/user-attachments/assets/39d02886-63ab-4bf4-a68d-3174290d019b" />
 # 🔍 Smart Research Assistant (Chrome Extension)
 
 Smart Research Assistant is a productivity-focused Chrome Extension designed to **help researchers, students, and writers summarize, cite, question, and save content** they find online — all in one seamless tool.
@@ -95,11 +95,7 @@ Make sure your Gemini API key is set up in your backend config.
 
 ## 📸 Demo
 
-> *Coming soon* — Include GIF or screenshots showing:
 
-* Selecting text → Getting a summary
-* Copy/paste/save actions
-* Citation generation
 
 ---
 
