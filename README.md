@@ -43,20 +43,6 @@ It intelligently combines the power of **Spring Boot**, **Gemini AI**, **Chrome 
 
 ---
 
-## 🧠 Architecture
-
-```
-
-User Action → Chrome Extension (Popup/Side Panel)
-↳ Selection Listener → Summarizer → Gemini API
-↳ Ask Question → Gemini Prompt
-↳ Save/Load Notes → chrome.storage.local
-↳ Citation → Extract title, URL, metadata
-↳ Copy → Clipboard API
-
-````
-
----
 
 ## 📦 Installation & Usage
 
