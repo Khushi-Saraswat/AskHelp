@@ -79,10 +79,6 @@ Make sure your Gemini API key is set up in your backend config.
 
 ---
 
-## 📸 Demo
-<img width="1832" height="781" alt="ask" src="https://github.com/user-attachments/assets/39d02886-63ab-4bf4-a68d-3174290d019b" />
-<img width="1896" height="863" alt="image" src="https://github.com/user-attachments/assets/978c13d8-2ab4-48e9-a00a-04a95c95c454" />
-<img width="649" height="784" alt="image" src="https://github.com/user-attachments/assets/19b42175-abad-4ee3-adbd-0d27257a21d7" />
 
 
 
