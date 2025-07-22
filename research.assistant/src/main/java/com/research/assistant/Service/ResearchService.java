@@ -92,11 +92,6 @@ public class ResearchService {
                         "Based on the following big paragraph as respect to question, answer the user's question clearly and accurately: ");
                 break;
 
-            case "export_pdf":
-                prompt.append(
-                        "Prepare the following summary and any reference information for professional PDF export. Make the text clear, structured, and easy to read: ");
-                break;
-
             default:
                 throw new IllegalArgumentException("Unknown Operation " + request.getOperation());
         }
