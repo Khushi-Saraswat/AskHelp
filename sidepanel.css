@@ -159,17 +159,9 @@ input{
 
 .moving-text {
             position: relative;
-            animation: move-text 10s linear infinite;
+            
             font-size: 20px;
             color: #000;
 
         }
         
-@keyframes move-text {
-            0% {
-                left: 100%;
-            }
-            100% {
-                left: -100%;
-            }
-        }
