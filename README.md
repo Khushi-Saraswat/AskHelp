@@ -1,116 +1,115 @@
 
+---
+
 # 🔍 Smart Research Assistant (Chrome Extension)
 
-Smart Research Assistant is a productivity-focused Chrome Extension designed to **help researchers, students, and writers summarize, cite, question, and save content** they find online — all in one seamless tool.
+Smart Research Assistant is a **Chrome Extension** that helps **students, researchers, and writers** by summarizing, saving, and asking questions about online content — using **Gemini AI** and **Spring Boot**.
 
-It intelligently combines the power of **Spring Boot**, **Gemini AI**, **Chrome Extension APIs**, and modern **web technologies** like HTML, CSS, and JavaScript to create an AI-enhanced research experience.
-
----
-
-## 🚀 Features
-
-### ✅ 1. AI-Powered Text Summarization
-- Select any text on a webpage → Get a **concise summary** instantly using Gemini API.
-- Designed for quick understanding of large content blocks.
-
-### ✅ 2. Citation Extraction
-- Automatically extracts:
-  - 📄 **Title** of the web page
-  - 🔗 **URL**
-  - 🗓️ **Publication Date** (if available)
-- Generates citation info for academic/reference use.
-
-### ✅ 3. Ask Questions About Text (Using Gemini)
-- After selecting any text, ask **follow-up questions**.
-- Example: Select a paragraph → Ask “What does this mean?” → Gemini provides an explanation.
-
-### ✅ 4. Save Notes Locally
-- Copy-pasted or selected text can be saved in a **local textarea** using **`chrome.storage.local`**.
-- Data persists even after browser refresh or tab close.
-
-### ✅ 5. Clipboard Copy Functionality
-- Any summarized or saved text can be **copied to clipboard** using the **Clipboard API**.
-- Makes it easy to transfer insights to documents, blogs, or note apps.
+👉 GitHub Repo: [Smart Research Assistant](https://github.com/Khushi-Saraswat/AskHelp)
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Key Features
 
-| Frontend  | Backend     | AI Integration | Browser APIs      |
-|-----------|-------------|----------------|--------------------|
-| HTML/CSS  | Spring Boot | Gemini AI API  | Chrome Extension APIs |
-| JavaScript | Java       |                | Clipboard API       |
+### ✅ Summarize Any Text with AI
+
+* Select text on any webpage.
+* Click the extension → Get a short, smart summary using **Gemini AI**.
+
+### ✅ Auto Citation Generator
+
+* It extracts:
+
+  * Webpage **Title**
+  * Webpage **Link (URL)**
+  * **Date Published** (if available)
+* Helps in creating quick references for assignments or blogs.
+
+### ✅ Ask Questions About Text
+
+* Select a paragraph → Ask a question like:
+
+  * “What does this mean?”
+  * “Why is this important?”
+* Gemini AI gives answers.
+
+### ✅ Save Notes (Locally)
+
+* Save your selected or written text.
+* Stored using `chrome.storage.local` → stays even after page reload or closing browser.
+
+### ✅ Copy to Clipboard
+
+* Easily copy summaries or notes to use in documents, emails, or anywhere.
 
 ---
 
+## 💻 Tech Stack
 
-## 📦 Installation & Usage
+| Frontend (Extension)  | Backend (Server)   | AI Integration | Browser Features                     |
+| --------------------- | ------------------ | -------------- | ------------------------------------ |
+| HTML, CSS, JavaScript | Spring Boot (Java) | Gemini AI      | Chrome Extension APIs, Clipboard API |
 
-### 1. Clone the Repository
+---
+
+## 🚀 How to Use
+
+### 🔧 1. Clone the Repo
 
 ```bash
-git clone https://github.com/Khushi-Saraswat/smart-research-assistant.git
-````
+git clone https://github.com/Khushi-Saraswat/AskHelp
+```
 
-### 2. Load Chrome Extension
+### 🔌 2. Load Extension in Chrome
 
-1. Go to `chrome://extensions/`
-2. Enable **Developer Mode**
+1. Open `chrome://extensions/`
+2. Turn on **Developer Mode**
 3. Click **Load Unpacked**
-4. Select the `extension/` directory inside the repo
+4. Select the `extension/` folder from the cloned project
 
-### 3. Run Spring Boot Backend
+### 🧠 3. Run the Backend Server
 
 ```bash
 cd backend/
 ./mvnw spring-boot:run
 ```
 
-Make sure your Gemini API key is set up in your backend config.
+✅ Make sure your `.env` or `application.properties` file has your **Gemini API Key**.
 
 ---
 
-## 📌 Use Cases
+## 📚 Who Can Use It?
 
-* 📚 Students summarizing research papers
-* ✍️ Writers collecting references
-* 🧠 Bloggers drafting quick content insights
-* 🧪 Developers testing with AI summarization tools
-
----
-
-
-
-
+* Students writing research papers
+* Bloggers and writers gathering info
+* Developers testing AI-based tools
+* Anyone who reads long content and wants help
 
 ---
 
-## 🤖 Powered By
+## 🔮 Future Plans
+
+* User Login with JWT
+* Save data to Firebase or MongoDB
+* Download notes as PDF
+* Dark Mode support
+
+---
+
+## ⚙️ Built With
 
 * [Gemini API](https://deepmind.google/technologies/gemini/)
 * [Spring Boot](https://spring.io/projects/spring-boot)
-* [Chrome Extension API](https://developer.chrome.com/docs/extensions/)
+* [Chrome Extensions](https://developer.chrome.com/docs/extensions/)
 * [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 
 ---
 
-## 🙌 Acknowledgements
+## 🙌 Made By
 
-Built with 💙 by **Khushi Saraswat** as part of a personal AI productivity project.
-
----
-
+Built with 💙 by **Khushi Saraswat**
+Check out: [github.com/Khushi-Saraswat](https://github.com/Khushi-Saraswat)
 
 ---
 
-## 💡 Future Enhancements
 
-* Login functionality with JWT
-* Save to cloud (Firebase or MongoDB)
-* Add PDF export
-* Dark Mode UI
-
-```
-
----
-```
