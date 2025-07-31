@@ -84,12 +84,16 @@ public class ResearchService {
 
             case "citation":
                 prompt.append(
-                        "Extract the citation details ( title, publication, URL)  from this text: ");
+                        "Extract the citation details (author, title, publication, year, URL) in APA format from this text: ");
                 break;
 
             case "ask":
+                prompt.append("Based on the following content, answer the user's question clearly and accurately: ");
+                break;
+
+            case "export_pdf":
                 prompt.append(
-                        "Based on the following big paragraph as respect to question, answer the user's question clearly and accurately: ");
+                        "Prepare the following summary and any reference information for professional PDF export. Make the text clear, structured, and easy to read: ");
                 break;
 
             default:
