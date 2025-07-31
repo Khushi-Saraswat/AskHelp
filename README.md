@@ -1,11 +1,11 @@
 
 ---
 
-# 🔍 Smart Research Assistant (Chrome Extension)
+# 🔍 AskHelp (Chrome Extension)
 
-Smart Research Assistant is a **Chrome Extension** that helps **students, researchers, and writers** by summarizing, saving, and asking questions about online content — using **Gemini AI** and **Spring Boot**.
+Ask Help is a **Chrome Extension** that helps **students, researchers, and writers** by summarizing, saving, and asking questions about online content — using **Gemini AI** and **Spring Boot**.
 
-👉 GitHub Repo: [Smart Research Assistant](https://github.com/Khushi-Saraswat/AskHelp)
+👉 GitHub Repo: [Ask Help](https://github.com/Khushi-Saraswat/AskHelp)
 
 ---
 
