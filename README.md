@@ -87,14 +87,6 @@ cd backend/
 
 ---
 
-## 🔮 Future Plans
-
-* User Login with JWT
-* Save data to Firebase or MongoDB
-* Download notes as PDF
-* Dark Mode support
-
----
 
 ## ⚙️ Built With
 
