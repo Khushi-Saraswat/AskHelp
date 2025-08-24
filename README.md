@@ -50,6 +50,20 @@ Ask Help is a **Chrome Extension** that helps **students, researchers, and write
 | --------------------- | ------------------ | -------------- | ------------------------------------ |
 | HTML, CSS, JavaScript | Spring Boot (Java) | Gemini AI      | Chrome Extension APIs, Clipboard API |
 
+
+📸 Screenshots
+
+Here are some screenshots of **AskHelp Extension** in action:
+
+### 📝 Summarization Feature
+<img src="public/summarize.PNG" alt="Summarization Screenshot" width="600"/>
+
+### 💾 Save Notes
+<img src="public/save.PNG" alt="Save Notes Screenshot" width="600"/>
+
+### 📌 Extension Popup
+<img src="public/s2.PNG" alt="Extension Popup Screenshot" width="600"/>
+
 ---
 
 ## 🚀 How to Use
