@@ -1,0 +1,42 @@
+.page { padding: 28px; max-width: 800px; display: flex; flex-direction: column; gap: 20px; }
+
+.inputBox { border: 1px solid var(--border-2); border-radius: var(--radius-lg); background: var(--bg-2); overflow: hidden; }
+.inputBox:focus-within { border-color: var(--gold); }
+.textarea { width: 100%; padding: 14px 16px; background: transparent; border: none; color: var(--text); font-size: 14px; line-height: 1.65; resize: none; outline: none; }
+.textarea::placeholder { color: var(--text-dim); }
+.singleInput { width: 100%; padding: 14px 16px; background: transparent; border: none; color: var(--text); font-size: 16px; outline: none; }
+.singleInput::placeholder { color: var(--text-dim); }
+.inputFooter { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg-3); }
+.wordCount { font-size: 11px; color: var(--text-dim); }
+
+/* options row */
+.options { display: flex; gap: 8px; flex-wrap: wrap; }
+.opt { display: flex; flex-direction: column; align-items: flex-start; padding: 8px 16px; border: 1px solid var(--border-2); border-radius: var(--radius); background: var(--bg-2); cursor: pointer; transition: all .15s; min-width: 90px; }
+.opt:hover { border-color: var(--gold); }
+.optActive { border-color: var(--gold) !important; background: var(--gold-dim) !important; }
+.optLabel { font-size: 13px; font-weight: 600; color: var(--text); font-family: var(--font-body); }
+.optDesc  { font-size: 11px; color: var(--text-muted); font-family: var(--font-body); margin-top: 2px; }
+.optActive .optLabel { color: var(--gold); }
+
+/* suggestions */
+.suggestions { display: flex; flex-direction: column; gap: 10px; }
+.suggestLabel { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 7px 14px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 99px; color: var(--text-muted); font-size: 12px; font-family: var(--font-body); cursor: pointer; transition: all .15s; }
+.chip:hover { border-color: var(--gold); color: var(--text); }
+
+/* citation form */
+.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.fieldLabel { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-dim); }
+.input { padding: 9px 12px; background: var(--bg-2); border: 1px solid var(--border-2); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; transition: border-color .15s; }
+.input:focus { border-color: var(--gold); }
+.input::placeholder { color: var(--text-dim); }
+
+.submitRow { display: flex; align-items: center; gap: 14px; }
+.hint { font-size: 12px; color: var(--text-dim); }
+
+@media (max-width: 600px) {
+  .formGrid { grid-template-columns: 1fr; }
+  .page { padding: 16px; }
+}

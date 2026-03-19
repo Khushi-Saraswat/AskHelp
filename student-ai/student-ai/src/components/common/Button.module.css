@@ -1,0 +1,39 @@
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: none; cursor: pointer; font-family: var(--font-body);
+  font-weight: 600; border-radius: var(--radius);
+  transition: all 0.18s var(--ease); white-space: nowrap;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:not(:disabled):active { transform: scale(0.97); }
+
+.sm { font-size: 12px; padding: 5px 12px; height: 30px; }
+.md { font-size: 13px; padding: 8px 18px; height: 38px; }
+.lg { font-size: 14px; padding: 11px 24px; height: 44px; }
+
+.primary {
+  background: var(--gold); color: #0f0e0c;
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+.primary:not(:disabled):hover { background: var(--gold-2); box-shadow: 0 0 32px var(--gold-glow); transform: translateY(-1px); }
+
+.secondary {
+  background: var(--bg-3); color: var(--text);
+  border: 1px solid var(--border-2);
+}
+.secondary:not(:disabled):hover { border-color: var(--gold); color: var(--gold); }
+
+.ghost { background: transparent; color: var(--text-muted); }
+.ghost:not(:disabled):hover { background: var(--bg-3); color: var(--text); }
+
+.danger { background: rgba(248,113,113,0.1); color: var(--err); border: 1px solid rgba(248,113,113,0.2); }
+.danger:not(:disabled):hover { background: rgba(248,113,113,0.2); }
+
+.spin {
+  width:13px; height:13px; border-radius:50%;
+  border: 2px solid rgba(15,14,12,0.3); border-top-color: #0f0e0c;
+  animation: spin .6s linear infinite;
+}
+.primary .spin { border-top-color: #0f0e0c; }
+.secondary .spin, .ghost .spin { border: 2px solid rgba(255,255,255,0.2); border-top-color: var(--text-muted); }
+@keyframes spin { to { transform: rotate(360deg); } }

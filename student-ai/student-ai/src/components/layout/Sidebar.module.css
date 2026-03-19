@@ -1,0 +1,41 @@
+.sidebar {
+  width: var(--sidebar-w); height: 100vh;
+  background: var(--bg-2); border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; flex-shrink: 0;
+  position: sticky; top: 0;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 11px;
+  padding: 22px 18px 20px; border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--warn));
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  color: #0f0e0c; box-shadow: 0 0 16px var(--gold-glow);
+}
+
+.name { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); }
+.tagline { font-size: 10px; color: var(--text-dim); letter-spacing: .06em; margin-top:1px; }
+
+.nav { flex: 1; padding: 16px 10px 10px; display: flex; flex-direction: column; gap: 2px; }
+.section { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); padding: 0 10px 8px; }
+
+.link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 9px; color: var(--text-muted);
+  font-size: 13px; font-weight: 500; transition: all .15s;
+}
+.link:hover { background: var(--bg-3); color: var(--text); }
+.active { background: var(--gold-dim) !important; color: var(--gold) !important; }
+
+.badge {
+  margin-left: auto; font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 99px; letter-spacing: .05em;
+  background: rgba(45,212,191,0.15); color: var(--teal); border: 1px solid rgba(45,212,191,0.25);
+}
+
+.bottom { padding: 10px; border-top: 1px solid var(--border); }

@@ -1,0 +1,87 @@
+.page { padding: 28px; max-width: 740px; display: flex; flex-direction: column; gap: 20px; }
+
+.inputBox {
+  border: 1px solid var(--border-2); border-radius: var(--radius-lg);
+  background: var(--bg-2); overflow: hidden;
+}
+.inputBox:focus-within { border-color: var(--gold); }
+.textarea {
+  width: 100%; padding: 14px 16px; background: transparent; border: none;
+  color: var(--text); font-size: 14px; line-height: 1.65; resize: none; outline: none;
+}
+.textarea::placeholder { color: var(--text-dim); }
+.inputFooter {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg-3);
+  gap: 12px; flex-wrap: wrap;
+}
+.countRow { display: flex; align-items: center; gap: 8px; }
+.countLabel { font-size: 12px; color: var(--text-muted); }
+.countBtn {
+  width: 32px; height: 28px; border-radius: 6px; border: 1px solid var(--border-2);
+  background: var(--bg-2); color: var(--text-muted); font-size: 12px;
+  font-family: var(--font-body); cursor: pointer; transition: all .15s;
+}
+.countBtn:hover { border-color: var(--gold); color: var(--gold); }
+.countActive { border-color: var(--gold) !important; color: var(--gold) !important; background: var(--gold-dim) !important; }
+
+/* ── Deck view ── */
+.deck { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 20px 0; }
+
+.deckMeta { display: flex; align-items: center; gap: 16px; width: 100%; justify-content: space-between; }
+.deckCount { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+.resetBtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 7px; border: 1px solid var(--border-2);
+  background: var(--bg-3); color: var(--text-muted); font-size: 12px;
+  font-family: var(--font-body); cursor: pointer; transition: all .15s;
+}
+.resetBtn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Flip card ── */
+.card {
+  width: 100%; max-width: 560px; height: 280px;
+  perspective: 1200px; cursor: pointer;
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.55s var(--ease);
+}
+.flipped { transform: rotateY(180deg); }
+
+.cardFront, .cardBack {
+  position: absolute; inset: 0;
+  border-radius: var(--radius-xl); padding: 32px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 1px solid var(--border-2);
+}
+.cardFront { background: var(--bg-2); }
+.cardBack { background: var(--bg-3); border-color: var(--gold); transform: rotateY(180deg); }
+
+.cardSide {
+  position: absolute; top: 16px; left: 20px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.cardFront .cardSide { color: var(--text-dim); }
+.cardBack .cardSide { color: var(--gold); }
+
+.cardText { font-size: 16px; line-height: 1.6; text-align: center; color: var(--text); font-family: var(--font-display); }
+.cardBack .cardText { color: var(--gold-2); }
+
+.tapHint {
+  position: absolute; bottom: 16px;
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--text-dim);
+}
+
+/* ── Controls ── */
+.controls { display: flex; align-items: center; gap: 20px; }
+.navBtn {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-2);
+  background: var(--bg-2); color: var(--text-muted); cursor: pointer;
+  display: grid; place-items: center; transition: all .15s;
+}
+.navBtn:not(:disabled):hover { border-color: var(--gold); color: var(--gold); }
+.navBtn:disabled { opacity: .3; cursor: not-allowed; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bg-3); border: 1px solid var(--border-2); cursor: pointer; transition: all .2s; }
+.dotActive { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }

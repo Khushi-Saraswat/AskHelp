@@ -1,0 +1,8 @@
+.wrap {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px; border-radius:var(--radius);
+  background:rgba(248,113,113,0.07); border:1px solid rgba(248,113,113,0.2);
+  color:var(--err); font-size:13px; animation: fadeIn .2s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none} }
+.close { margin-left:auto; background:none; border:none; color:var(--err); cursor:pointer; display:grid; place-items:center; }

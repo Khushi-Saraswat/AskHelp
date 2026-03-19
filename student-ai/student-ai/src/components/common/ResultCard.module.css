@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid var(--border-2); border-radius: var(--radius-lg);
+  background: var(--bg-2); overflow: hidden; margin-top: 20px;
+  animation: up .3s var(--ease);
+}
+@keyframes up { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+.header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg-3);
+}
+.label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+.actions { display:flex; gap:8px; }
+.save {
+  padding:4px 10px; border-radius:6px; border:1px solid var(--gold);
+  background:transparent; color:var(--gold); font-size:12px; font-family:var(--font-body);
+  cursor:pointer; transition:background .15s;
+}
+.save:hover { background: var(--gold-dim); }
+.body { padding:18px; font-size:14px; line-height:1.8; color:var(--text); white-space:pre-wrap; }

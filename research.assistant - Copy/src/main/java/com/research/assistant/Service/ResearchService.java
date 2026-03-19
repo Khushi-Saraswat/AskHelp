@@ -2,30 +2,21 @@ package com.research.assistant.Service;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.research.assistant.Response.GeminiResponse;
 import com.research.assistant.request.ResearchRequest;
 
 @Service
 public class ResearchService {
 
-    @Value("${gemini.api.url}")
-    private String geminiApiUrl;
-    @Value("${gemini.api.key}")
-    private String geminiApiKey;
+    @Autowired
+    private ChatClient chatClient;
 
-    private final WebClient webClient;
-
-    private final ObjectMapper objectMapper;
-
-    public ResearchService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
-        this.webClient = webClientBuilder.build();
-        this.objectMapper = objectMapper;
-    }
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public String processContent(ResearchRequest request) {
         // Build the prompt
@@ -42,37 +33,21 @@ public class ResearchService {
 
         );
 
-        String response = webClient.post()
-                .uri(geminiApiUrl + geminiApiKey)
-                .bodyValue(requestBody).retrieve()
-                .bodyToMono(String.class).block();
+        // String parts = (String) requestBody.get("text");
+        // String response = webClient.post()
+        // .uri(geminiApiUrl + geminiApiKey)
+        // .bodyValue(requestBody).retrieve()
+        // .bodyToMono(String.class).block();
         // parse the response
         // return response
 
-        return extractTextFromResponse(response);
-    }
+        String response = chatClient
+                .prompt()
+                .user(prompt)
+                .call()
+                .content();
 
-    private String extractTextFromResponse(String response) {
-        try {
-
-            GeminiResponse geminiResponse = objectMapper.readValue(response, GeminiResponse.class);
-            if (geminiResponse.getCandidates() != null && !geminiResponse.getCandidates().isEmpty()) {
-                GeminiResponse.Candidate firstcan = geminiResponse.getCandidates().get(0);
-
-                if (firstcan.getContent() != null
-                        && firstcan.getContent().getParts() != null
-                        && !firstcan.getContent().getParts().isEmpty()) {
-                    return firstcan.getContent().getParts().get(0).getText();
-                }
-
-            }
-
-        } catch (Exception e) {
-            return "Error Parsing:" + e.getMessage();
-        }
-
-        return "No content";
-
+        return response;
     }
 
     private String buildPrompt(ResearchRequest request) {

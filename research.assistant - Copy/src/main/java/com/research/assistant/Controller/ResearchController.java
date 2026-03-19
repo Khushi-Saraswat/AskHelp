@@ -23,7 +23,9 @@ public class ResearchController {
     @PostMapping("/process")
     public ResponseEntity<String> processContent(@RequestBody ResearchRequest request) {
 
+        System.out.println(request + "" + "request");
         String result = researchService.processContent(request);
+        System.out.println(result + "" + "result");
         return ResponseEntity.ok(result);
 
     }
