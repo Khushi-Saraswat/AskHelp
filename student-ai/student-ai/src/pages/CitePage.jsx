@@ -14,9 +14,7 @@ const FIELDS = [
   { key: 'author',  label: 'Author(s) *',       placeholder: 'Last, First' },
   { key: 'year',    label: 'Year *',             placeholder: '2024' },
   { key: 'source',  label: 'Journal / Publisher',placeholder: 'Nature, Pearson…' },
-  { key: 'url',     label: 'URL (optional)',     placeholder: 'https://…' },
-  { key: 'volume',  label: 'Vol. / Issue',       placeholder: 'Vol. 12, Issue 3' },
-  { key: 'pages',   label: 'Pages',              placeholder: '45–67' },
+
 ]
 
 export default function CitePage() {

@@ -18,7 +18,6 @@ export default function Sidebar() {
         <div className={s.logo}>S</div>
         <div>
           <div className={s.name}>StudyAI</div>
-          <div className={s.tagline}>Powered by Gemini</div>
         </div>
       </div>
 
@@ -34,12 +33,7 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className={s.bottom}>
-        <NavLink to="/settings"
-          className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>
-          <Settings size={15} /><span>Settings</span>
-        </NavLink>
-      </div>
+     
     </aside>
   )
 }

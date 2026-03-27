@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 const Ctx = createContext(null)
 
 export function AppProvider({ children }) {
-  const [notes, setNotes]         = useState(() => JSON.parse(localStorage.getItem('sa_notes') || '[]'))
+  const [notes, setNotes]   = useState(() => JSON.parse(localStorage.getItem('sa_notes') || '[]'))
   const [chatHistory, setChatHistory] = useState([])
   const [baseUrl, setBaseUrl]     = useState(() => localStorage.getItem('sa_base_url') || '')
 

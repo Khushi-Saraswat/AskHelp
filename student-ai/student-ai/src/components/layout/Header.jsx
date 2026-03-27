@@ -13,6 +13,7 @@ const META = {
 
 export default function Header() {
   const { pathname } = useLocation()
+  console.log(pathname+"pathname");
   const { title, sub } = META[pathname] || META['/']
   return (
     <header className={s.header}>

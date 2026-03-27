@@ -28,6 +28,7 @@ export default function ExplainPage() {
 
   const handle = async () => {
     setResult('')
+    console.log(concept+""+level);
     const data = await run(explainConcept, concept, level)
     if (data?.explanation) setResult(data.explanation)
   }

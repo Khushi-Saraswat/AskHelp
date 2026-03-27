@@ -3,7 +3,9 @@
 // Default: http://localhost:8080 (proxied via Vite in dev)
 // Change BASE_URL below if your backend is on a different host.
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+export const BASE_URL = "http://localhost:8080"
+
+console.log(BASE_URL+"BASE_URL");
 
 async function post(endpoint, body) {
   const res = await fetch(`${BASE_URL}${endpoint}`, {
@@ -20,22 +22,22 @@ async function post(endpoint, body) {
 
 // ── Endpoints (match these to your Spring Boot controller) ───
 
-// POST /api/chat  { messages: [{role, content}] }  → { reply: "..." }
-export const sendChat = (messages) =>
-  post('/chat', { messages })
+// POST /api/chat  { message: "..." }  → { reply: "..." }
+export const sendChat = (message) =>
+  post('/api/chat', { message })
 
 // POST /api/summarize  { text, mode }  → { summary: "..." }
-export const summarizeText = (text, mode = 'standard') =>
-  post('/summarize', { text, mode })
+export const summarizeText = (text, mode) =>
+  post('/api/summarize', { text, mode })
 
 // POST /api/cite  { ...fields, format }  → { citation: "..." }
 export const generateCitation = (fields, format) =>
-  post('/cite', { ...fields, format })
+  post('/api/cite', { ...fields, format })
 
 // POST /api/flashcards  { text, count }  → { cards: [{q, a}] }
 export const generateFlashcards = (text, count = 5) =>
-  post('/flashcards', { text, count })
+  post('/api/flashcards', { text, count })
 
 // POST /api/explain  { concept, level }  → { explanation: "..." }
-export const explainConcept = (concept, level = 'simple') =>
-  post('/explain', { concept, level })
+export const explainConcept = (concept, level) =>
+  post('/api/explain', { concept, level })

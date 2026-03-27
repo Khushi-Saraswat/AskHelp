@@ -9,7 +9,7 @@ import s from './ChatPage.module.css'
 export default function ChatPage() {
   const { chatHistory, setChatHistory, saveNote } = useApp()
   const { run, loading, error, clearError } = useApi()
-  const [input, setInput] = useState('')
+  const [message, setMessage] = useState('')
   const bottomRef = useRef(null)
 
   useEffect(() => {
@@ -17,16 +17,17 @@ export default function ChatPage() {
   }, [chatHistory, loading])
 
   const send = async () => {
-    const text = input.trim()
-    if (!text || loading) return
-    setInput('')
+    //const text = message.trim()
+    console.log("text",message);
+    if (!message || loading) return
+    setMessage('')
     clearError()
 
-    const userMsg = { role: 'user', content: text }
+    const userMsg = { role: 'user', content: message }
     const updated = [...chatHistory, userMsg]
     setChatHistory(updated)
 
-    const data = await run(sendChat, updated)
+    const data = await run(sendChat, message)
     if (data?.reply) {
       setChatHistory(prev => [...prev, { role: 'assistant', content: data.reply }])
     }
@@ -44,7 +45,7 @@ export default function ChatPage() {
             <p className={s.emptySub}>Ask anything — topics, concepts, problems, essays…</p>
             <div className={s.starters}>
               {['Explain Newton\'s laws simply', 'What is the difference between mitosis and meiosis?', 'Help me understand the French Revolution', 'What is recursion in programming?'].map(q => (
-                <button key={q} className={s.starter} onClick={() => setInput(q)}>{q}</button>
+                <button key={q} className={s.starter} onClick={() => setMessage(q)}>{q}</button>
               ))}
             </div>
           </div>
@@ -82,12 +83,12 @@ export default function ChatPage() {
           <textarea
             className={s.input}
             placeholder="Ask Gemini anything…"
-            value={input}
-            onChange={e => setInput(e.target.value)}
+            value={message}
+            onChange={e => setMessage(e.target.value)}
             rows={1}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send() } }}
           />
-          <button className={`${s.sendBtn} ${loading || !input.trim() ? s.sendDisabled : ''}`} onClick={send} disabled={loading || !input.trim()}>
+          <button className={`${s.sendBtn} ${loading || !message.trim() ? s.sendDisabled : ''}`} onClick={send} disabled={loading || !message.trim()}>
             <Send size={15} />
           </button>
         </div>
