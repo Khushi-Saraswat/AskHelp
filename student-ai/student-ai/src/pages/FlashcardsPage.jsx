@@ -56,6 +56,7 @@ export default function FlashcardsPage() {
           <div className={`${s.card} ${flipped ? s.flipped : ''}`} onClick={() => setFlipped(p => !p)}>
             <div className={s.cardFront}>
               <span className={s.cardSide}>Question</span>
+              <button className={s.cardText}>Save</button>
               <p className={s.cardText}>{cards[idx]?.q}</p>
               <div className={s.tapHint}><Eye size={12}/> Tap to reveal answer</div>
             </div>
