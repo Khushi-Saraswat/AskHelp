@@ -2,22 +2,20 @@ package com.research.assistant.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.research.assistant.Response.FlashcardResponse;
 import com.research.assistant.request.ChatRequest;
 import com.research.assistant.request.SummarizeRequest;
 import com.research.assistant.request.ExplainRequest;
+import com.research.assistant.request.FlashcardRequest;
 import com.research.assistant.request.CitationRequest;
 
 @Service
@@ -25,6 +23,7 @@ public class ResearchService {
 
     @Autowired
     private ChatClient chatClient;
+    
 
     private List<String> splitText;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -141,106 +140,52 @@ public class ResearchService {
         
         return prompt.toString();
     }
+   
+    public FlashcardResponse generateFlashcards(FlashcardRequest request) {
 
-    public String upload(MultipartFile file)throws IOException{
-       PDDocument document= PDDocument.load(file.getInputStream());
-       PDFTextStripper pdfTextStripper=new PDFTextStripper();
-       String text=pdfTextStripper.getText(document);
-       splitText=chunkText(text,500,100);
-       
-       // Persist chunks to local file for durability
-       String fileName = file.getOriginalFilename().replaceAll("[^a-zA-Z0-9.-]", "_");
-       saveChunks(splitText, fileName);
-       
-       return "PDF processed and chunks saved successfully";
-    }
+    String prompt = """
+       Generate %d flashcards from the text below.
 
-    private List<String> chunkText(String text, int chunkSize, int overlap) {
-    List<String> chunks = new ArrayList<>();
-    for (int i = 0; i < text.length(); i += (chunkSize - overlap)) {
-        chunks.add(text.substring(i, Math.min(text.length(), i + chunkSize)));
+  {
+  "cards":[
+    {
+      "q":"question",
+      "a":"answer",
+      "tags":["tag1","tag2"]
     }
-    return chunks;
-    }
+  ]
+   }
+        Text:
+       %s
+       """.formatted(request.getCount(), request.getText());
 
-    /**
-     * Saves chunked PDF data to a JSON file for persistence
-     * @param chunks List of text chunks to save
-     * @param fileName Original PDF file name (used to create unique storage file)
-     */
-    public void saveChunks(List<String> chunks, String fileName) throws IOException {
-        try {
-            String jsonFileName = fileName.replaceAll("\\.pdf$", "") + "_chunks.json";
-            Path filePath = Paths.get(CHUNKS_STORAGE_DIR, jsonFileName);
-            
-            String jsonData = objectMapper.writeValueAsString(chunks);
-            Files.write(filePath, jsonData.getBytes());
-            
-            System.out.println("Chunks saved to: " + filePath.toAbsolutePath());
-        } catch (IOException e) {
-            System.err.println("Error saving chunks: " + e.getMessage());
-            throw e;
-        }
-    }
+    String response = chatClient
+            .prompt()
+            .user(prompt)
+            .call()
+            .content();
 
-    /**
-     * Loads previously saved chunks from JSON file
-     * @param fileName Original PDF file name
-     * @return List of chunks, or empty list if file not found
-     */
-    public List<String> loadChunks(String fileName) throws IOException {
-        try {
-            String jsonFileName = fileName.replaceAll("\\.pdf$", "") + "_chunks.json";
-            Path filePath = Paths.get(CHUNKS_STORAGE_DIR, jsonFileName);
-            
-            if (Files.exists(filePath)) {
-                String jsonData = Files.readString(filePath);
-                List<String> chunks = objectMapper.readValue(jsonData, 
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, String.class));
-                System.out.println("Chunks loaded from: " + filePath.toAbsolutePath());
-                return chunks;
-            } else {
-                System.out.println("Chunks file not found: " + filePath);
-                return new ArrayList<>();
-            }
-        } catch (IOException e) {
-            System.err.println("Error loading chunks: " + e.getMessage());
-            throw e;
-        }
-    }
+    
+    response = response.replace("```json", "")
+                       .replace("```", "")
+                       .trim();
 
-    /**
-     * List all stored chunk files
-     * @return List of stored PDF chunk file names
-     */
-    public List<String> listStoredChunks() throws IOException {
-        List<String> fileNames = new ArrayList<>();
-        if (Files.exists(Paths.get(CHUNKS_STORAGE_DIR))) {
-            Files.list(Paths.get(CHUNKS_STORAGE_DIR))
-                .filter(path -> path.toString().endsWith("_chunks.json"))
-                .forEach(path -> fileNames.add(path.getFileName().toString()));
-        }
-        return fileNames;
-    }
+    System.out.println("RAW AI RESPONSE: " + response);
 
-    /**
-     * Delete chunks storage for a specific file
-     * @param fileName Original PDF file name
-     */
-    public boolean deleteChunks(String fileName) throws IOException {
-        try {
-            String jsonFileName = fileName.replaceAll("\\.pdf$", "") + "_chunks.json";
-            Path filePath = Paths.get(CHUNKS_STORAGE_DIR, jsonFileName);
-            
-            if (Files.exists(filePath)) {
-                Files.delete(filePath);
-                System.out.println("Chunks deleted: " + filePath);
-                return true;
-            }
-            return false;
-        } catch (IOException e) {
-            System.err.println("Error deleting chunks: " + e.getMessage());
-            throw e;
-        }
+    try {
+        FlashcardResponse flashcardResponse =
+                objectMapper.readValue(response, FlashcardResponse.class);
+
+        return flashcardResponse;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+
+        // fallback: return empty but not null
+        return new FlashcardResponse(new ArrayList<>());
     }
+}
+
+
+
 }

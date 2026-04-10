@@ -63,6 +63,8 @@ export default function FlashcardsPage() {
               <span className={s.cardSide}>Answer</span>
               <p className={s.cardText}>{cards[idx]?.a}</p>
             </div>
+
+            
           </div>
 
           <div className={s.controls}>

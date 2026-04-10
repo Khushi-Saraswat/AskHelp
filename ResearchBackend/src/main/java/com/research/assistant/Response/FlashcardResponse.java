@@ -1,26 +1,23 @@
 package com.research.assistant.Response;
 
 import java.util.List;
-
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class FlashcardResponse {
-        private List<Card> cards;
 
-    public FlashcardResponse(List<Card> cards) {
-        this.cards = cards;
-    }
-
-    // getter & setter
+    private List<Card> cards;
 
     @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Card {
-        private String question;
-        private String answer;
-
-        // getters & setters
+        private String q;
+        private String a;
+        private List<String> tags;
     }
-
 }

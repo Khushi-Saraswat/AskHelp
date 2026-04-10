@@ -1,26 +1,23 @@
 package com.research.assistant.Controller;
 
-import java.io.IOException;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.research.assistant.Service.ResearchService;
 import com.research.assistant.request.ChatRequest;
 import com.research.assistant.request.SummarizeRequest;
 import com.research.assistant.request.ExplainRequest;
 import com.research.assistant.request.CitationRequest;
-import com.google.common.net.MediaType;
+import com.research.assistant.request.FlashcardRequest;
 import com.research.assistant.Response.ChatResponse;
 import com.research.assistant.Response.SummaryResponse;
 import com.research.assistant.Response.ExplainResponse;
 import com.research.assistant.Response.CitationResponse;
+import com.research.assistant.Response.FlashcardResponse;
 
 import lombok.AllArgsConstructor;
 
@@ -81,9 +78,16 @@ public class ResearchController {
 
     }
 
-    @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String upload(@RequestPart("file")MultipartFile file)throws IOException{
-        
+    @PostMapping("/flashcards")
+    public ResponseEntity<FlashcardResponse> generateFlashcards(@RequestBody FlashcardRequest request) {
+
+        System.out.println(request + "" + "request");
+        FlashcardResponse result = researchService.generateFlashcards(request);
+        System.out.println(result + "" + "result");
+        return ResponseEntity.ok(result);
+
     }
+
+    
 
 }
