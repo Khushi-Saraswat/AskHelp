@@ -37,5 +37,5 @@ export const explainConcept = (concept, level) =>
   post('/api/explain', { concept, level })
 
 // Ensure 'export' is at the start and name is 'askRag'
-export const askRag = (question) => post('/ask/rag', { question });
+export const askRag = (question) => post('/api/ask/rag', { question });
 

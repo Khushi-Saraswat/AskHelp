@@ -107,6 +107,7 @@ public class ResearchController {
     public ResponseEntity<String> askRagQuestion(@RequestBody RagQuestion question) {
         // Process the RAG question
         String result = ragService.ask(question);
+        System.out.println("print"+"print");
         return ResponseEntity.ok(result);
     }
 
