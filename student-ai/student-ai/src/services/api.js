@@ -1,11 +1,5 @@
 // ── API Service ──────────────────────────────────────────────
-// All calls go to your Spring Boot backend.
-// Default: http://localhost:8080 (proxied via Vite in dev)
-// Change BASE_URL below if your backend is on a different host.
-
 export const BASE_URL = "http://localhost:8080"
-
-console.log(BASE_URL+"BASE_URL");
 
 async function post(endpoint, body) {
   const res = await fetch(`${BASE_URL}${endpoint}`, {
@@ -20,24 +14,28 @@ async function post(endpoint, body) {
   return res.json()
 }
 
-// ── Endpoints (match these to your Spring Boot controller) ───
+// ── Endpoints ───────────────────────────────────────────────
 
-// POST /api/chat  { message: "..." }  → { reply: "..." }
+// POST /api/chat  { message: "..." }
 export const sendChat = (message) =>
   post('/api/chat', { message })
 
-// POST /api/summarize  { text, mode }  → { summary: "..." }
+// POST /api/summarize  { text, mode }
 export const summarizeText = (text, mode) =>
   post('/api/summarize', { text, mode })
 
-// POST /api/cite  { ...fields, format }  → { citation: "..." }
+// POST /api/cite  { ...fields, format }
 export const generateCitation = (fields, format) =>
   post('/api/cite', { ...fields, format })
 
-// POST /api/flashcards  { text, count }  → { cards: [{q, a}] }
+// POST /api/flashcards  { text, count }
 export const generateFlashcards = (text, count = 5) =>
   post('/api/flashcards', { text, count })
 
-// POST /api/explain  { concept, level }  → { explanation: "..." }
+// POST /api/explain  { concept, level }
 export const explainConcept = (concept, level) =>
   post('/api/explain', { concept, level })
+
+// Ensure 'export' is at the start and name is 'askRag'
+export const askRag = (question) => post('/ask/rag', { question });
+

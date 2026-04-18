@@ -20,5 +20,3 @@ export function useApi() {
 
   return { run, loading, error, clearError: () => setError(null) }
 }
-
-

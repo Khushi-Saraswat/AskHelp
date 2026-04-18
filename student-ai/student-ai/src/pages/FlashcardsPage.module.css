@@ -85,3 +85,66 @@
 .dots { display: flex; gap: 6px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bg-3); border: 1px solid var(--border-2); cursor: pointer; transition: all .2s; }
 .dotActive { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
+
+
+.ragContainer {
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 16px;
+  transition: border-color 0.2s;
+}
+
+.searchWrapper:focus-within {
+  border-color: #7c3aed;
+}
+
+.ragInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 0.95rem;
+}
+
+.askBtn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.ragResponse {
+  margin-top: 12px;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  padding: 16px;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  color: #4c1d95;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.closeAnswer {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #a78bfa;
+}

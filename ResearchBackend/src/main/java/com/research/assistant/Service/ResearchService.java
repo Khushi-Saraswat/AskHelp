@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.research.assistant.Model.FlashCard;
+import com.research.assistant.Repository.FlashCardRepository;
 import com.research.assistant.Response.FlashcardResponse;
 import com.research.assistant.request.ChatRequest;
 import com.research.assistant.request.SummarizeRequest;
 import com.research.assistant.request.ExplainRequest;
 import com.research.assistant.request.FlashcardRequest;
+import com.research.assistant.request.Question;
 import com.research.assistant.request.CitationRequest;
 
 @Service
@@ -28,6 +31,9 @@ public class ResearchService {
     private List<String> splitText;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final String CHUNKS_STORAGE_DIR = "data/pdf_chunks";
+
+    @Autowired
+    private FlashCardRepository flashCardRepository;
     
     public ResearchService() throws IOException {
         // Create storage directory if it doesn't exist
@@ -185,6 +191,44 @@ public class ResearchService {
         return new FlashcardResponse(new ArrayList<>());
     }
 }
+
+
+   
+  public String saveFlashCards(Question request){
+        
+    FlashCard flashCard = new FlashCard();
+    flashCard.setQuestion(request.getQuestion());
+    flashCard.setAnswer(request.getAnswer());
+    
+    FlashCard card=flashCardRepository.save(flashCard);
+
+    if(card != null){
+        return "Flashcard saved successfully with ID: " + card.getId();
+    } else {
+        return "Failed to save flashcard.";
+    }
+
+
+  }
+
+
+  public String askHelp(String context,String question){
+    String prompt = """
+       Based on the following content, answer the user's question clearly and accurately: 
+       Context:
+       %s
+       Question:
+       %s
+        """.formatted(context,question);
+
+    String response = chatClient
+            .prompt()
+            .user(prompt)
+            .call()
+            .content();
+
+    return response;
+  }
 
 
 
