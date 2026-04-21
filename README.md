@@ -179,6 +179,53 @@ Frontend UI
 
 ---
 
+Add this section in your GitHub README under **Live Demo** or **Deployment**:
+
+---
+
+# 🌐 Live Demo
+
+Frontend (Netlify)
+[https://your-netlify-link.netlify.app](https://your-netlify-link.netlify.app)
+
+Backend (Render)
+[https://your-render-link.onrender.com](https://your-render-link.onrender.com)
+
+---
+
+# 🚀 Deployment
+
+This project is deployed using:
+
+Frontend: Netlify (React + Tailwind)
+Backend: Render (Spring Boot API)
+
+Deployment Architecture:
+
+React App (Netlify)
+↓
+Spring Boot API (Render)
+↓
+Gemini API
+
+---
+
+# ⚙️ Environment Variables
+
+Backend (Render)
+
+application.properties
+
+gemini.api.key=YOUR_GEMINI_API_KEY
+
+Just replace:
+
+* `your-netlify-link`
+* `your-render-link`
+
+and paste in README.
+
+
 # 🚀 How to Run
 
 1. Clone Repository
