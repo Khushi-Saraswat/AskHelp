@@ -38,14 +38,19 @@ export default function FlashcardsPage() {
 
     try {
       const res = await askRag(question)
-
+      
+      console.log(res);
       // backend-safe response handling
-      setRagAnswer(
-        res?.answer ||
-        res?.data?.answer ||
-        res?.result ||
-        'No answer found'
-      )
+      
+       // Define the phrase to remove
+       const introPhrase = "Since no specific context was provided in your prompt, here is the standard classification of Python based on general programming principles: ";
+
+      // Clean the response: remove the phrase and the triple asterisks
+      const cleanAnswer = res.answer
+      ? res.answer.replace(introPhrase, "").replaceAll("***", "")
+      : 'No answer found';
+
+      setRagAnswer(cleanAnswer)
     } catch (err) {
       setRagAnswer(err.message)
     } finally {

@@ -1,5 +1,7 @@
 package com.research.assistant.Controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -103,12 +105,14 @@ public class ResearchController {
         return ResponseEntity.ok(s);
     }
 
-    @PostMapping("/ask/rag")
-    public ResponseEntity<String> askRagQuestion(@RequestBody RagQuestion question) {
-        // Process the RAG question
-        String result = ragService.ask(question);
-        System.out.println("print"+"print");
-        return ResponseEntity.ok(result);
-    }
+   @PostMapping("/ask/rag")
+   public ResponseEntity<Map<String, String>> askRagQuestion(@RequestBody RagQuestion question) {
+
+    String result = ragService.ask(question);
+
+    System.out.println(result + " print");
+
+    return ResponseEntity.ok(Map.of("answer", result));
+}
 
 }

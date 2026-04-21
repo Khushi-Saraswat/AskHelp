@@ -1,12 +1,15 @@
 // ── API Service ──────────────────────────────────────────────
-export const BASE_URL = "http://localhost:8080"
+const API_URL = import.meta.env.VITE_API_URL;
 
 async function post(endpoint, body) {
-  const res = await fetch(`${BASE_URL}${endpoint}`, {
+
+  console.log(API_URL,"api_url")
+  const res = await fetch(`${API_URL}${endpoint}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
+  
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
     throw new Error(err?.message || err?.error || `Request failed (${res.status})`)
@@ -36,6 +39,13 @@ export const generateFlashcards = (text, count = 5) =>
 export const explainConcept = (concept, level) =>
   post('/api/explain', { concept, level })
 
-// Ensure 'export' is at the start and name is 'askRag'
-export const askRag = (question) => post('/api/ask/rag', { question });
+export const askRag = async (question) => {
+  const res = await fetch(`${API_URL}/api/ask/rag`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question }),
+  })
+
+  return res.json()
+}
 
