@@ -1,121 +1,235 @@
+```markdown
+# AskHelp – AI Study Assistant Web App
+
+AskHelp is an AI-powered web application that helps students, researchers, and developers **summarize, explain, chat, generate flashcards, create citations, and save notes** using **Gemini AI + Spring Boot backend**.
+
+The project also includes a **Basic RAG (Retrieval Augmented Generation)** implementation using **Java 8 Stream filtering**, with plans to integrate **real vector-based RAG** in future versions.
 
 ---
 
-# 🔍 AskHelp (Chrome Extension)
+# ✨ Features
 
-Ask Help is a **Chrome Extension** that helps **students, researchers, and writers** by summarizing, saving, and asking questions about online content — using **Gemini AI** and **Spring Boot**.
+## 🤖 AI Chat Assistant
+- Ask questions about provided content  
+- Context-aware responses using Gemini AI  
+- Structured JSON response handling  
+- Clean UI built with React + Tailwind  
 
-👉 GitHub Repo: [Ask Help](https://github.com/Khushi-Saraswat/AskHelp)
-
----
-
-## ✨ Key Features
-
-### ✅ Summarize Any Text with AI
-
-* Select text on any webpage.
-* Click the extension → Get a short, smart summary using **Gemini AI**.
-
-### ✅ Auto Citation Generator
-
-* It extracts:
-
-  * Webpage **Title**
-  * Webpage **Link (URL)**
-  * **Date Published** (if available)
-* Helps in creating quick references for assignments or blogs.
-
-### ✅ Ask Questions About Text
-
-* Select a paragraph → Ask a question like:
-
-  * “What does this mean?”
-  * “Why is this important?”
-* Gemini AI gives answers.
-
-### ✅ Save Notes (Locally)
-
-* Save your selected or written text.
-* Stored using `chrome.storage.local` → stays even after page reload or closing browser.
-
-### ✅ Copy to Clipboard
-
-* Easily copy summaries or notes to use in documents, emails, or anywhere.
+Example:
+- Explain this paragraph  
+- What does this mean?  
+- Summarize in bullet points  
 
 ---
 
-## 💻 Tech Stack
-
-| Frontend (Extension)  | Backend (Server)   | AI Integration | Browser Features                     |
-| --------------------- | ------------------ | -------------- | ------------------------------------ |
-| HTML, CSS, JavaScript | Spring Boot (Java) | Gemini AI      | Chrome Extension APIs, Clipboard API |
-
-
-📸 Screenshots
-
-Here are some screenshots of **AskHelp Extension** in action:
-
-### 📝 Summarization Feature
-<img src="public/summarize.PNG" alt="Summarization Screenshot" width="600"/>
-
-### 💾 Save Notes
-<img src="public/save.PNG" alt="Save Notes Screenshot" width="600"/>
-
-### 📌 Extension Popup
-<img src="public/s2.PNG" alt="Extension Popup Screenshot" width="600"/>
+## 📝 AI Summarization
+- Paste or input any text  
+- Generate concise summary  
+- Fast response using Gemini API  
+- Supports long content  
 
 ---
 
-## 🚀 How to Use
+## 📖 Explain Feature
+- Simplifies complex content  
+- Beginner-friendly explanations  
+- AI-generated examples  
 
-### 🔧 1. Clone the Repo
+Example:
+- Explain in simple terms  
+- Explain with example  
+- Explain step by step  
 
-```bash
+---
+
+## 🧠 Flashcard Generator
+- Converts text into flashcards  
+- Question → Answer format  
+- Useful for revision & interviews  
+- Structured response using Gemini  
+
+---
+
+## 📌 Citation Generator
+Automatically extracts and generates:
+- Title  
+- URL  
+- Published date (if available)  
+- Reference format  
+
+Useful for:
+- Assignments  
+- Research  
+- Blogs  
+
+---
+
+## 💾 My Notes
+- Save notes manually  
+- Store AI generated summaries  
+- Local storage support  
+- Persistent data  
+
+---
+
+## 📋 Copy to Clipboard
+- Copy AI responses  
+- Copy flashcards  
+- Copy summaries  
+- One-click support  
+
+---
+
+# 🧠 Basic RAG Implementation
+
+This project includes **Basic RAG (Retrieval Augmented Generation)**
+
+### Current Implementation
+- Context filtering using Java 8 Streams  
+- Relevant content selection  
+- Prompt construction  
+- Gemini API call  
+- Structured JSON output  
+
+Flow:
+
+User Question  
+→ Filter relevant context (Java Streams)  
+→ Build prompt  
+→ Gemini API  
+→ Structured Response  
+→ UI Display  
+
+### Benefits
+- Better accuracy  
+- Reduced hallucination  
+- Context-aware answers  
+- Faster responses  
+
+---
+
+# 🔮 Future RAG Improvements
+
+Planned upgrades:
+- Vector Database  
+- Embeddings  
+- Semantic search  
+- Multi-document RAG  
+- Conversation memory  
+- Real retrieval pipeline  
+
+---
+
+# 🏗 Tech Stack
+
+## Frontend
+- ReactJS  
+- App Context API  
+- Tailwind CSS  
+- Axios  
+- Component-based architecture  
+
+## Backend
+- Spring Boot  
+- Spring AI  
+- Gemini API  
+- DTO architecture  
+- Structured JSON response  
+
+## AI Features
+- Gemini AI  
+- Prompt engineering  
+- Basic RAG filtering  
+- Flashcard generation  
+- Summarization  
+- Explanation  
+- Chat assistant  
+
+---
+
+# ⚙️ Architecture
+
+React Web App  
+↓  
+Spring Boot API  
+↓  
+Basic RAG Filtering (Java Streams)  
+↓  
+Gemini API  
+↓  
+Structured Response  
+↓  
+Frontend UI  
+
+---
+
+# 🚀 How to Run
+
+## 1. Clone Repository
+
 git clone https://github.com/Khushi-Saraswat/AskHelp
+
+---
+
+## 2. Run Backend
+
+cd backend  
+mvn spring-boot:run
+
+---
+
+## 3. Run Frontend
+
+cd frontend  
+npm install  
+npm run dev
+
+---
+
+## 4. Add Gemini API Key
+
+application.properties
+
+gemini.api.key=YOUR_API_KEY
+
+---
+
+
+
+---
+
+# 🧩 Project Highlights
+
+- AI Chat  
+- Summarization  
+- Explain feature  
+- Flashcard generator  
+- Citation generator  
+- Notes storage  
+- Basic RAG implementation  
+- React Context state management  
+- Tailwind UI  
+- Spring Boot backend  
+- Gemini structured responses  
+
+---
+
+# 🔥 Upcoming Features
+
+- Real RAG with vector DB  
+- Upload PDF support  
+- Multi-page summarization  
+- Export notes  
+- Save flashcards  
+- AI study mode  
+- History tracking  
+
+---
+
+# 🙌 Made By
+
+Khushi Saraswat  
+
+GitHub:  
+https://github.com/Khushi-Saraswat
 ```
-
-### 🔌 2. Load Extension in Chrome
-
-1. Open `chrome://extensions/`
-2. Turn on **Developer Mode**
-3. Click **Load Unpacked**
-4. Select the `extension/` folder from the cloned project
-
-### 🧠 3. Run the Backend Server
-
-```bash
-cd backend/
-./mvnw spring-boot:run
-```
-
-✅ Make sure your `.env` or `application.properties` file has your **Gemini API Key**.
-
----
-
-## 📚 Who Can Use It?
-
-* Students writing research papers
-* Bloggers and writers gathering info
-* Developers testing AI-based tools
-* Anyone who reads long content and wants help
-
----
-
-
-## ⚙️ Built With
-
-* [Gemini API](https://deepmind.google/technologies/gemini/)
-* [Spring Boot](https://spring.io/projects/spring-boot)
-* [Chrome Extensions](https://developer.chrome.com/docs/extensions/)
-* [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
-
----
-
-## 🙌 Made By
-
-Built with 💙 by **Khushi Saraswat**
-Check out: [github.com/Khushi-Saraswat](https://github.com/Khushi-Saraswat)
-
----
-
-
