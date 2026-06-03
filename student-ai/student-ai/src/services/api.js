@@ -1,20 +1,35 @@
 // ── API Service ──────────────────────────────────────────────
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || ''
 
-async function post(endpoint, body) {
-
-  console.log(API_URL,"api_url")
+async function request(endpoint, options = {}) {
   const res = await fetch(`${API_URL}${endpoint}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {}),
+    },
+    ...options,
   })
-  
+
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
     throw new Error(err?.message || err?.error || `Request failed (${res.status})`)
   }
+
   return res.json()
+}
+
+function post(endpoint, body) {
+  return request(endpoint, {
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
+}
+
+function get(endpoint) {
+  return request(endpoint, {
+    method: 'GET',
+  })
 }
 
 // ── Endpoints ───────────────────────────────────────────────
@@ -39,12 +54,30 @@ export const generateFlashcards = (text, count = 5) =>
 export const explainConcept = (concept, level) =>
   post('/api/explain', { concept, level })
 
+export const login = (email, password) =>
+  post('/auth/login', { email, password })
+
+export const registerUser = (name, email, password) =>
+  post('/auth/register', { name, email, password })
+
+export const logout = () =>
+  post('/auth/logout', {})
+
+export const me = () =>
+  get('/auth/me')
+
 export const askRag = async (question) => {
   const res = await fetch(`${API_URL}/api/ask/rag`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     body: JSON.stringify({ question }),
   })
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err?.message || err?.error || `Request failed (${res.status})`)
+  }
 
   return res.json()
 }

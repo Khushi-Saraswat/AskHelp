@@ -1,3 +1,9 @@
-.shell { display: flex; height: 100vh; overflow: hidden; }
+.shell { display: flex; min-height: 100vh; overflow: hidden; }
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
-.content { flex: 1; overflow-y: auto; background: var(--bg); }
+.content { flex: 1; overflow-y: auto; background: var(--bg); min-height: 0; }
+
+@media (max-width: 900px) {
+  .shell { flex-direction: column; }
+  .main { min-height: calc(100vh - var(--header-h)); }
+  .content { height: auto; }
+}

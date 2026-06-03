@@ -104,3 +104,14 @@
 .sendBtn:hover { background: var(--gold-2); }
 .sendDisabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
 .hint { font-size: 11px; color: var(--text-dim); padding-left: 2px; }
+
+@media (max-width: 900px) {
+  .page { padding: 18px; }
+  .messages { padding: 18px 12px 14px; }
+  .bubble { flex-direction: column; gap: 10px; max-width: 100%; }
+  .bubbleText { font-size: 14px; }
+  .inputArea { padding: 14px 16px 12px; }
+  .inputRow { flex-direction: column; align-items: stretch; }
+  .clearBtn { width: 100%; max-width: 100%; }
+  .sendBtn { width: 100%; }
+}

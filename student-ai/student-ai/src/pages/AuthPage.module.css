@@ -1,0 +1,273 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--bg);
+}
+
+.authShell {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) minmax(320px, 520px);
+  gap: 28px;
+  width: min(100%, 960px);
+}
+
+.authPanel,
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 22px 55px rgba(8, 15, 29, 0.08);
+}
+
+.authPanel {
+  padding: 34px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brandPanel {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.sideLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--gold), var(--warn));
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--bg);
+}
+
+.sideTitle {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.sideSubtitle {
+  margin: 6px 0 0;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.featureList {
+  display: grid;
+  gap: 18px;
+}
+
+.featureItem {
+  display: grid;
+  gap: 6px;
+}
+
+.featureItem strong {
+  font-size: 14px;
+}
+
+.featureItem p {
+  margin: 0;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.card {
+  width: 100%;
+  padding: 34px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.switcher {
+  display: flex;
+  gap: 12px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.activeTab {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 30px;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+.subhead {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.input {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border-2);
+  background: var(--bg-3);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--gold);
+}
+
+.error {
+  color: var(--red);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 14px;
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.actions a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.link {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.smallText {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.banner {
+  padding: 14px 16px;
+  background: rgba(255, 223, 93, 0.14);
+  border: 1px solid rgba(255, 223, 93, 0.3);
+  border-radius: 16px;
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .authShell {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .authPanel,
+  .card {
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding: 20px;
+  }
+
+  .authPanel,
+  .card {
+    padding: 20px;
+  }
+
+  .switcher {
+    flex-direction: column;
+  }
+
+  .tabButton {
+    width: 100%;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .sideTitle {
+    font-size: 20px;
+  }
+
+  .sideSubtitle,
+  .featureItem p,
+  .featureItem strong {
+    font-size: 13px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

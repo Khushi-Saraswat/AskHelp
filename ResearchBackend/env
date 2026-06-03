@@ -1,0 +1,12 @@
+LLM_API_KEY=AIzaSyCkYnx1bUA33sKmb7MhF7VjNonzyW-3GsY
+
+#app port
+PORT=8080
+
+#DB
+
+DB_URL=jdbc:postgresql://localhost:5432/ask
+DB_USERNAME=postgres
+DB_PASSWORD=khu123_45
+
+#FRONTEND_URL=

@@ -4,13 +4,29 @@ import { Check, Server, Info } from 'lucide-react'
 import s from './SettingsPage.module.css'
 
 export default function SettingsPage() {
-  const { baseUrl, updateBaseUrl } = useApp()
+  const { baseUrl, updateBaseUrl, logoutUser } = useApp()
   const [val, setVal]   = useState(baseUrl)
   const [saved, setSaved] = useState(false)
+  const [logoutLoading, setLogoutLoading] = useState(false)
+  const [logoutMessage, setLogoutMessage] = useState('')
 
   const save = () => {
     updateBaseUrl(val.trim())
     setSaved(true); setTimeout(() => setSaved(false), 2000)
+  }
+
+  const handleLogout = async () => {
+    setLogoutLoading(true)
+    setLogoutMessage('')
+
+    try {
+      await logoutUser()
+      setLogoutMessage('Logged out successfully')
+    } catch (err) {
+      setLogoutMessage(err.message)
+    } finally {
+      setLogoutLoading(false)
+    }
   }
 
   return (
@@ -68,6 +84,18 @@ export default function SettingsPage() {
           <span>Frontend: React 18 + Vite</span>
           <span>Backend: Spring Boot + Gemini</span>
         </div>
+      </section>
+
+      <section className={s.section}>
+        <div className={s.sectionHead}>
+          <Info size={16} />
+          <h2 className={s.sectionTitle}>Authentication</h2>
+        </div>
+        <p className={s.desc}>Use the login and signup pages to access the backend authentication endpoints.</p>
+        <button className={s.saveBtn} onClick={handleLogout} disabled={logoutLoading}>
+          {logoutLoading ? 'Logging out…' : 'Logout'}
+        </button>
+        {logoutMessage && <p className={s.desc}>{logoutMessage}</p>}
       </section>
 
     </div>

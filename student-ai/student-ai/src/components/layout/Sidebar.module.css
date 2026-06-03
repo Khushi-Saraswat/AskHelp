@@ -1,8 +1,20 @@
 .sidebar {
-  width: var(--sidebar-w); height: 100vh;
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  height: auto;
   background: var(--bg-2); border-right: 1px solid var(--border);
   display: flex; flex-direction: column; flex-shrink: 0;
   position: sticky; top: 0;
+  overflow-y: auto;
+}
+
+.nav {
+  flex: 1;
+  padding: 16px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
 }
 
 .brand {
@@ -38,4 +50,44 @@
   background: rgba(45,212,191,0.15); color: var(--teal); border: 1px solid rgba(45,212,191,0.25);
 }
 
+.authPanel {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.authBtn {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .bottom { padding: 10px; border-top: 1px solid var(--border); }
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%; height: auto;
+    border-right: none; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 20;
+    flex-direction: row; align-items: center;
+    padding: 14px 12px;
+  }
+
+  .brand {
+    padding: 0; margin-right: 16px;
+  }
+
+  .nav {
+    flex: 1; padding: 0; display: flex;
+    flex-direction: row; gap: 8px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+
+  .section { display: none; }
+
+  .link { white-space: nowrap; }
+}
